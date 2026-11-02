@@ -33,10 +33,26 @@ pre code, .box code { color: inherit; }
 .tiles { position: fixed; top: 0; bottom: 0; width: 48px; background: url("assets/tiles.svg") repeat-y 0 0 / 48px 288px; z-index: 0; }
 .tiles.l { left: 0; }
 .tiles.r { right: 0; background-position: 0 -144px; }
-.doodle { position: fixed; z-index: 0; color: var(--desk-text); opacity: 0.85; pointer-events: none; }
-.doodle.fish { left: 7vw; bottom: 14vh; width: 120px; }
-.doodle.lock { right: 7vw; top: 30vh; width: 90px; }
-@media (max-width: 1240px) { .doodle { display: none; } }
+.desk { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+.doodle {
+  position: absolute; left: calc(48px + var(--x)); top: var(--y);
+  color: var(--desk-text); opacity: 0.8; pointer-events: auto; cursor: pointer;
+  translate: calc(var(--mx, 0) * var(--d) * 1px) calc(var(--my, 0) * var(--d) * 1px);
+  transition: translate 0.4s ease-out, opacity 0.2s;
+}
+.doodle.r { left: auto; right: calc(48px + var(--x)); }
+.doodle:hover { opacity: 1; color: var(--marker); }
+@media (max-width: 1240px) { .desk { display: none; } }
+@media (prefers-reduced-motion: no-preference) {
+  .tiles.l { animation: tiles-down 36s linear infinite; }
+  .tiles.r { animation: tiles-up 36s linear infinite; }
+  .doodle { animation: bob var(--t) ease-in-out infinite alternate; }
+  .doodle.spin { animation: spin 0.8s cubic-bezier(0.3, 1.4, 0.5, 1); }
+}
+@keyframes tiles-down { to { background-position: 0 288px; } }
+@keyframes tiles-up { from { background-position: 0 -144px; } to { background-position: 0 -432px; } }
+@keyframes bob { from { transform: translateY(-10px) rotate(-5deg); } to { transform: translateY(10px) rotate(5deg); } }
+@keyframes spin { from { transform: rotate(0) scale(1); } 50% { transform: rotate(200deg) scale(1.15); } to { transform: rotate(360deg) scale(1); } }
 @media (max-width: 1000px) { .tiles { display: none; } }
 
 /* Nav: handwritten, lowercase, on the desk */
@@ -67,7 +83,7 @@ pre code, .box code { color: inherit; }
   padding: calc(var(--nav-h) + 22px) 16px 28px;
   display: flex; justify-content: center;
 }
-.notebook { position: relative; width: min(960px, 100%); min-width: 0; height: 100%; }
+.notebook { position: relative; width: min(1040px, 100%); min-width: 0; height: 100%; }
 
 /* Spiral binding across the top */
 .spiral {
@@ -88,44 +104,81 @@ pre code, .box code { color: inherit; }
   border: 2px solid var(--cover-dark);
   border-radius: 22px;
   padding: 12px;
-  perspective: 2200px;
+  perspective: 2400px;
   perspective-origin: 50% 0;
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
 }
 .page {
   position: absolute; inset: 12px;
   z-index: var(--z);
+  transform-origin: 50% 0;
+  transform-style: preserve-3d;
+  transition: transform 0.95s cubic-bezier(0.55, 0.05, 0.2, 1), visibility 0s linear 0s;
+}
+/* A turned page stays up over the spiral; hide it once the turn has finished */
+.page.flipped {
+  transform: rotateX(180deg);
+  visibility: hidden;
+  transition: transform 0.95s cubic-bezier(0.55, 0.05, 0.2, 1), visibility 0s linear 0.95s;
+}
+.face, .back {
+  position: absolute; inset: 0;
+  border-radius: 12px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.face {
   background-color: var(--paper);
   background-image:
     linear-gradient(var(--grid) 1px, transparent 1px),
     linear-gradient(90deg, var(--grid) 1px, transparent 1px);
   background-size: 28px 28px;
-  border-radius: 12px;
-  padding: clamp(30px, 4.6vh, 48px) clamp(20px, 4.5vw, 52px) clamp(18px, 3vh, 32px);
-  font-size: clamp(13px, 1.85vh, 17px);
+  padding: clamp(30px, 4.4vh, 46px) clamp(20px, 4.5vw, 56px) clamp(22px, 3.4vh, 36px);
+  font-size: clamp(14px, 2.05vh, 19px);
   overflow: hidden auto;
-  transform-origin: 50% 0;
-  transform: rotateX(calc(var(--f, 0) * 180deg));
-  will-change: transform;
+  display: flex; flex-direction: column;
 }
-.page::after { /* shading while the page lifts */
+/* Pages with tables or long lists get a slightly smaller size */
+.page.dense .face { font-size: clamp(13px, 1.78vh, 16.5px); }
+/* Centre the page body between the header and the bottom edge */
+.face > :nth-child(2) { margin-top: auto; }
+.face > :last-child { margin-bottom: auto; }
+.back {
+  transform: rotateX(180deg);
+  background: linear-gradient(to bottom, #e4d0b8, var(--paper-back) 40%);
+  box-shadow: inset 0 0 40px rgba(34, 32, 31, 0.12);
+}
+/* The sheet darkens as it lifts towards the reader */
+.face::after {
   content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
-  background: linear-gradient(to top, rgba(34, 32, 31, 0.28), transparent 70%);
-  opacity: calc(var(--f, 0) * 2.2);
+  background: linear-gradient(to top, rgba(34, 32, 31, 0.35), rgba(34, 32, 31, 0.05) 70%);
+  opacity: 0; transition: opacity 0.5s ease-in;
 }
-
-/* Past 90 degrees the reader sees the back of the sheet going over the spiral */
-.page.back { background-image: none; background-color: var(--paper-back); }
-.page.back > * { visibility: hidden; }
+.page.flipped > .face::after { opacity: 1; }
+/* The page underneath starts in the shadow of the turning sheet */
+.page.flipped + .page:not(.flipped) > .face::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: linear-gradient(to bottom, rgba(34, 32, 31, 0.3), transparent 60%);
+  animation: uncover 0.95s ease-out forwards;
+}
+@keyframes uncover { from { opacity: 1; } to { opacity: 0; } }
 
 /* Page furniture */
 .ph { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-bottom: clamp(10px, 2vh, 22px); }
 .ph h2 { font: 700 clamp(1.5rem, 3.4vh, 2.1rem)/1.1 var(--serif); color: var(--ink); margin: 0; }
 .ph h2 .num { font: 400 0.8em var(--hand); color: var(--muted); margin-right: 10px; }
 .ph .pno { font: 1rem var(--hand); color: var(--muted); white-space: nowrap; }
-.page h3 { font: 700 1.12em var(--serif); color: var(--ink); margin: 1.2em 0 0.4em; }
+.page h3 { font: 700 1.15em var(--serif); color: var(--ink); margin: 1.1em 0 0.4em; }
 .page h3:first-child { margin-top: 0; }
-.page p { margin: 0 0 0.8em; max-width: 72ch; }
+.page p { margin: 0 0 0.8em; max-width: 74ch; }
+.split { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: clamp(20px, 3vw, 44px); }
+.grid240 td.n, .grid240 th:not(:first-child) { text-align: center; }
+.big { font: 700 2.6em/1 var(--serif); color: var(--ink); margin: 14px 0 6px !important; }
+.big .hand { font-size: 0.5em; font-weight: 400; }
+.levels { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 14px; }
+.levels div { border: 1.5px solid var(--ink); border-radius: 10px; padding: 8px 12px; background: #fffaf2; font-size: 0.9em; line-height: 1.35; }
+.levels div:first-child { background: var(--marker); border-color: var(--text); }
+.levels b { display: block; font: 1.15em var(--hand); color: var(--ink); }
 .lead { font: 400 1.3em/1.4 var(--serif); }
 .hand { font-family: var(--hand); color: var(--ink); }
 .cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 clamp(20px, 3vw, 40px); }
@@ -148,20 +201,21 @@ pre code, .box code { color: inherit; }
 .points b { font-weight: 600; }
 
 /* Taped paper notes */
-.notes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px; margin-top: 26px; }
+.notes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px 40px; margin-top: 22px; }
 .note { margin: 0; background: #fffaf2; padding: 22px 18px 16px; position: relative; box-shadow: 2px 6px 0 rgba(34, 32, 31, 0.14); }
 .note:nth-child(1) { transform: rotate(-2deg); }
 .note:nth-child(2) { transform: rotate(1.5deg); background: #e9ddc9; }
-.note:nth-child(3) { transform: rotate(-0.8deg); background-image: repeating-linear-gradient(transparent 0 25px, rgba(39, 71, 163, 0.25) 25px 26px); }
+.note:nth-child(4) { transform: rotate(-1.2deg); background: #e9ddc9; }
+.note:nth-child(3) { transform: rotate(0.8deg); background-image: repeating-linear-gradient(transparent 0 25px, rgba(39, 71, 163, 0.25) 25px 26px); }
 .note::before { content: ""; position: absolute; top: -12px; left: 50%; width: 80px; height: 24px; transform: translateX(-50%) rotate(-3deg); background: rgba(242, 201, 76, 0.6); }
 .note .lang { font: 0.95em var(--hand); color: var(--muted); margin: 0 0 6px; }
-.note blockquote { margin: 0; font-size: 1.12em; line-height: 1.55; }
+.note blockquote { margin: 0; font-size: 1.3em; line-height: 1.5; }
 .note .verdict { font: 1.1em var(--hand); color: var(--ink); margin: 12px 0 0; }
 mark { background: linear-gradient(transparent 35%, var(--marker) 35%, var(--marker) 88%, transparent 88%); color: inherit; padding: 0 2px; }
 
 /* Tables */
 table { border-collapse: collapse; width: 100%; font-size: 0.9em; }
-th, td { text-align: left; vertical-align: top; padding: 0.45em 0.9em 0.45em 0; border-bottom: 1px solid var(--rule); }
+th, td { text-align: left; vertical-align: top; padding: 0.55em 0.9em 0.55em 0; border-bottom: 1px solid var(--rule); }
 th { font-weight: 600; color: var(--ink); border-bottom: 1.5px solid var(--ink); }
 td.n { font-variant-numeric: tabular-nums; }
 .caption { font: 0.95em var(--hand); color: var(--muted); margin: 6px 0 0; }
@@ -179,9 +233,9 @@ td.n { font-variant-numeric: tabular-nums; }
 
 /* Stack */
 .stack { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 32px; margin: 0; }
-.stack div { padding: 0.6em 0; border-top: 1px solid var(--rule); }
+.stack div { padding: 0.75em 0; border-top: 1px solid var(--rule); }
 .stack dt { font: 1.05em var(--hand); color: var(--ink); }
-.stack dd { margin: 0; font-size: 0.94em; }
+.stack dd { margin: 0; }
 
 /* Pipeline steps (a real sequence) */
 .steps { list-style: none; padding: 0; margin: 0 0 4px; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); counter-reset: s; border-top: 2px solid var(--ink); }
@@ -210,13 +264,13 @@ pre { background: var(--desk); color: var(--desk-text); font: 0.8em/1.55 var(--m
 .shots figure:nth-child(2) img { transform: rotate(1.2deg); }
 .shots figcaption { font: 0.95em var(--hand); color: var(--muted); margin-top: 8px; text-align: center; }
 
-.refs { padding: 0; margin: 0; list-style: none; font-size: 0.82em; columns: 2; column-gap: 32px; }
+.refs { padding: 0; margin: 0; list-style: none; font-size: 0.9em; columns: 2; column-gap: 32px; }
 .refs li { break-inside: avoid; display: grid; grid-template-columns: 34px minmax(0, 1fr); margin-bottom: 0.55em; }
 .refs span { font-family: var(--hand); color: var(--ink); }
 
-.back { min-height: 100%; display: grid; place-content: center; text-align: center; gap: 6px; }
-.back .sig { font: 2.4em var(--hand); color: var(--ink); margin: 0; }
-.back p { margin: 0 auto; }
+.endpaper { min-height: 100%; display: grid; place-content: center; text-align: center; gap: 6px; }
+.endpaper .sig { font: 2.4em var(--hand); color: var(--ink); margin: 0; }
+.endpaper p { margin: 0 auto; }
 .empty { min-height: 100%; display: grid; place-content: center; text-align: center; font: 1.6em var(--hand); color: var(--muted); }
 
 /* Small screens and reduced motion: plain stacked sheets, no flipping */
@@ -226,12 +280,14 @@ pre { background: var(--desk); color: var(--desk-text); font: 0.8em/1.55 var(--m
   .stage { position: static; height: auto; padding-bottom: 48px; }
   .notebook { height: auto; }
   .pages { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
-  .page { position: relative; inset: auto; transform: none; overflow: visible; font-size: 15px; }
-  .page::after { display: none; }
-  .empty, .back { min-height: 50vh; }
+  .page { position: relative; inset: auto; transform: none; visibility: visible; transition: none; }
+  .face { position: relative; overflow: visible; font-size: 15px; }
+  .back, .face::after, .face::before { display: none; }
+  .empty, .endpaper { min-height: 50vh; }
 }
 @media (max-width: 760px) {
-  .cover, .cols, .stack { grid-template-columns: minmax(0, 1fr); }
+  .cover, .cols, .stack, .split, .notes { grid-template-columns: minmax(0, 1fr); }
+  .levels { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .cover h1 { font-size: 1.9rem; }
   .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .notes { grid-template-columns: minmax(0, 1fr); }
