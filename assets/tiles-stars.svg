@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="288" viewBox="0 0 48 288">
+  <g fill="#2747a3">
+    <rect x="2" y="2" width="44" height="44" rx="7"/>
+    <rect x="2" y="50" width="44" height="44" rx="7"/>
+    <rect x="2" y="98" width="44" height="44" rx="7"/>
+    <rect x="2" y="146" width="44" height="44" rx="7"/>
+    <rect x="2" y="194" width="44" height="44" rx="7"/>
+    <rect x="2" y="242" width="44" height="44" rx="7"/>
+  </g>
+  <g fill="#f6e9d9">
+    <!-- star -->
+    <path d="M24 11 l3.6 7.4 8.1 1.1 -5.9 5.6 1.4 8 -7.2 -3.8 -7.2 3.8 1.4 -8 -5.9 -5.6 8.1 -1.1 z"/>
+    <!-- six -->
+    <text x="24" y="130" font-family="Georgia, serif" font-size="27" text-anchor="middle">6</text>
+    <!-- sparkle -->
+    <path d="M24 154 c1 7 4 10 10 14 c-6 4 -9 7 -10 14 c-1 -7 -4 -10 -10 -14 c6 -4 9 -7 10 -14 z"/>
+  </g>
+  <g fill="none" stroke="#f6e9d9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- graduation cap -->
+    <path d="M9 66 l15 -7 l15 7 l-15 7 z M16 70 v6 c4 3 12 3 16 0 v-6 M37 67 v8"/>
+    <!-- medal -->
+    <path d="M18 203 l4 9 M30 203 l-4 9"/>
+    <circle cx="24" cy="221" r="8"/>
+    <!-- open book -->
+    <path d="M24 256 c-4 -3 -9 -3 -14 -1 v18 c5 -2 10 -2 14 1 c4 -3 9 -3 14 -1 v-18 c-5 -2 -10 -2 -14 1 z M24 256 v18"/>
+  </g>
+</svg>
