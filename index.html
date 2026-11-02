@@ -109,27 +109,52 @@
   </div>
 </section>
 
-<section class="min" id="learnings" role="tabpanel" aria-labelledby="tab-learnings" hidden>
-  <article>
-    <header>
-      <p class="kick">Learnings</p>
-      <h1>Common Author</h1>
-      <p class="lede">Detects and compares writing-style patterns across documents, without a prior corpus of anyone's writing. It works only with the documents it is given and labels writers as anonymous clusters.</p>
-      <p class="links"><a href="https://github.com/m-rithik/Common-Author">GitHub</a><a href="https://common-writer.streamlit.app/">Live app</a></p>
-      <dl class="facts-min">
-        <div><dt>Faculty</dt><dd>Sharmila B</dd></div>
-        <div><dt>Slot</dt><dd>F1+TF1</dd></div>
-        <div><dt>Date</dt><dd>27 Aug 2026</dd></div>
-      </dl>
-    </header>
+<div class="book" id="learnings" role="tabpanel" aria-labelledby="tab-learnings" hidden>
+  <div class="stage"><div class="notebook"><div class="spiral" aria-hidden="true"></div><div class="pages">
 
-    <section>
-      <h2>Idea</h2>
-      <p>It came out of a case study on embeddings. Every segment of text becomes a fixed-length vector, and an author profile is the length-weighted mean of that author's segment vectors. Profiles are then compared across documents.</p>
+    <section class="page" aria-label="Common Author">
+      <div class="cover">
+        <div>
+          <p class="sig">Common Author</p>
+          <p class="role">Learnings, NLP project</p>
+          <h1>Spotting a shared writer across documents, with no prior corpus</h1>
+          <p class="rot">anonymous clusters, <span>real evidence</span></p>
+          <dl class="facts">
+            <div><dt>Student</dt><dd>Rithik M (23MID0413)</dd></div>
+            <div><dt>Faculty</dt><dd>Sharmila B</dd></div>
+            <div><dt>Slot and date</dt><dd>F1+TF1, 27 Aug 2026</dd></div>
+            <div><dt>Links</dt><dd><a href="https://github.com/m-rithik/Common-Author">GitHub repo</a><br><a href="https://common-writer.streamlit.app/">Live app</a></dd></div>
+          </dl>
+        </div>
+        <svg class="art" viewBox="0 0 320 300" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Line drawing: two documents with matching highlighted passages, joined by a dashed link scored 92.1 out of 100, and a magnifying glass">
+          <g fill="#f2c94c" stroke="none"><rect x="32" y="80" width="96" height="11"/><rect x="32" y="94" width="80" height="11"/><rect x="192" y="146" width="96" height="11"/><rect x="192" y="160" width="70" height="11"/></g>
+          <rect x="20" y="44" width="120" height="164" rx="8"/>
+          <path d="M34 70 H126 M34 85 H126 M34 99 H110 M34 114 H126 M34 128 H120 M34 143 H126 M34 157 H100 M34 172 H126 M34 186 H90"/>
+          <rect x="180" y="96" width="120" height="164" rx="8"/>
+          <path d="M194 122 H286 M194 137 H280 M194 151 H286 M194 165 H262 M194 180 H286 M194 194 H270 M194 209 H286 M194 223 H250"/>
+          <path d="M132 88 C176 40 230 70 232 140" stroke-dasharray="5 6"/>
+          <path d="M226 132 l6 10 l6 -10"/>
+          <text x="150" y="44" fill="currentColor" stroke="none" font-family="Gochi Hand, cursive" font-size="20">92.1 / 100</text>
+          <circle cx="96" cy="246" r="26"/><path d="M115 265 L140 292"/>
+          <text x="96" y="254" text-anchor="middle" fill="currentColor" stroke="none" font-family="Averia Serif Libre, serif" font-size="22">Aa</text>
+        </svg>
+      </div>
     </section>
 
-    <section>
-      <h2>How it works</h2>
+    <section class="page" aria-label="Idea">
+      <header class="ph"><h2><span class="num">1</span>The idea</h2><span class="pno"></span></header>
+      <p class="lead">It came out of a case study on embeddings. Every segment of text becomes a fixed-length vector, and an author profile is the length-weighted mean of that author's segment vectors. Profiles are then compared across documents.</p>
+      <ul class="points">
+        <li><b>Input</b><span>Two or more English, text-based PDFs, an expected author count for each, and an optional roster of contributor names.</span></li>
+        <li><b>Inside one PDF</b><span>Finds where the writing style changes and groups the pieces into exactly the given number of authors.</span></li>
+        <li><b>Across PDFs</b><span>Links author profiles that look alike, without knowing anyone's writing in advance.</span></li>
+        <li><b>Names</b><span>Never guessed from style. A roster can name a writer only when the logic leaves one possibility.</span></li>
+        <li><b>Output</b><span>A plain-language report, comparison tables and annotated PDFs with highlights and style-shift notes.</span></li>
+      </ul>
+    </section>
+
+    <section class="page" aria-label="How it works, part 1">
+      <header class="ph"><h2><span class="num">2</span>How it works</h2><span class="pno"></span></header>
       <ol class="flow">
         <li>Upload PDFs, an author count K per document, and an optional roster</li>
         <li>Validate the request</li>
@@ -141,6 +166,12 @@
         <li>Build adaptive character and handcrafted style features</li>
         <li>Score each candidate boundary</li>
         <li>Smooth scores and pick peaks by prominence, spacing and sensitivity</li>
+      </ol>
+    </section>
+
+    <section class="page" aria-label="How it works, part 2">
+      <header class="ph"><h2><span class="num">2</span>How it works, continued</h2><span class="pno"></span></header>
+      <ol class="flow" start="11">
         <li>Cut the text into contiguous segments</li>
         <li>Turn each segment into a stable hashed vector</li>
         <li>Cluster segments into exactly K local authors</li>
@@ -151,51 +182,65 @@
         <li>Apply roster constraints to name a writer only when it is unambiguous</li>
         <li>Report findings and export PDFs with highlights and style-shift notes</li>
       </ol>
-      <p class="note-min">Style features: character 3–5 grams, function words, lexical and punctuation statistics, part-of-speech patterns and syntax. A link needs a resemblance of at least 90/100 and a 5-point lead over the alternatives.</p>
+      <p class="caption">Style features: character 3–5 grams, function words, lexical and punctuation statistics, part-of-speech patterns and syntax. A link needs a resemblance of at least 90/100 and a 5-point lead over the alternatives.</p>
     </section>
 
-    <section>
-      <h2>Results</h2>
-      <div class="tbl"><table>
-        <thead><tr><th>Run</th><th>Papers</th><th>What it found</th></tr></thead>
-        <tbody>
-          <tr><td>Same author</td><td>Auto-Encoding Variational Bayes (Kingma, Welling) and Adam (Kingma, Ba)</td><td>Shared writing pattern in 2 of 2 PDFs, 92.1/100. The other pairings scored 53.0, 41.7 and 22.3.</td></tr>
-          <tr><td>Different authors</td><td>Auto-Encoding Variational Bayes and a credit-card fraud detection paper (Nama, Sharmila Banu)</td><td>No shared pattern found</td></tr>
-          <tr><td>Three papers</td><td>All three of the above</td><td>Shared pattern in 2 of 3 PDFs, 92.5/100, linking the two Kingma papers</td></tr>
-        </tbody>
-      </table></div>
-      <figure class="shot-min">
-        <img src="assets/ca-result.png" alt="Common Author results for the same-author run: 2 documents, 4 writing groups, 6 style changes, a shared pattern in 2 of 2 PDFs with resemblance 92.1 out of 100" loading="lazy" width="867" height="648">
-        <figcaption>Same-author run in the live app</figcaption>
-      </figure>
-      <p class="note-min">A resemblance score describes writing patterns only. It is not a probability, proof of identity or a plagiarism judgment.</p>
+    <section class="page" aria-label="Results">
+      <header class="ph"><h2><span class="num">3</span>Results</h2><span class="pno"></span></header>
+      <div class="res">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Run</th><th>Papers</th><th>What it found</th></tr></thead>
+          <tbody>
+            <tr><td>Same author</td><td>Auto-Encoding Variational Bayes (Kingma, Welling) and Adam (Kingma, Ba)</td><td>Shared pattern in 2 of 2 PDFs, 92.1/100. Other pairings: 53.0, 41.7, 22.3</td></tr>
+            <tr><td>Different authors</td><td>Auto-Encoding Variational Bayes and a credit-card fraud detection paper (Nama, Sharmila Banu)</td><td>No shared pattern found</td></tr>
+            <tr><td>Three papers</td><td>All three of the above</td><td>Shared pattern in 2 of 3 PDFs, 92.5/100, linking the two Kingma papers</td></tr>
+          </tbody>
+        </table></div>
+        <figure class="shot"><img src="assets/ca-result.png" alt="Common Author results: 2 documents, 4 writing groups, 6 style changes, a shared pattern in 2 of 2 PDFs with resemblance 92.1 out of 100" width="867" height="648"><figcaption>the same-author run in the live app</figcaption></figure>
+      </div>
+      <p class="caption">A resemblance score describes writing patterns only. It is not a probability, proof of identity or a plagiarism judgment.</p>
     </section>
 
-    <section>
-      <h2>What I learned</h2>
-      <ul class="plainlist">
-        <li>Stylometry works, but only with enough text to find patterns in.</li>
-        <li>Classical features like character n-grams go a long way before a neural model is needed.</li>
-        <li>The same approach could help spot AI-written text by training on large text sets and finding patterns in a PDF.</li>
-        <li>The hardest part was keeping PDF coordinates intact through the whole pipeline. That part can still be improved.</li>
+    <section class="page" aria-label="What I learned">
+      <header class="ph"><h2><span class="num">4</span>What I learned</h2><span class="pno"></span></header>
+      <ul class="points">
+        <li><b>Text matters</b><span>Stylometry works, but only with enough text to find patterns in.</span></li>
+        <li><b>Classical goes far</b><span>Features like character n-grams go a long way before a neural model is needed.</span></li>
+        <li><b>AI writing</b><span>The same approach could help spot AI-written text by training on large text sets and finding patterns in a PDF.</span></li>
+        <li><b>Hardest part</b><span>Keeping PDF coordinates intact through the whole pipeline. That part can still be improved.</span></li>
+      </ul>
+      <h3>Limits I'd fix next</h3>
+      <ul class="points">
+        <li><b>Scanned PDFs</b><span>Image-only PDFs need OCR and are rejected for now.</span></li>
+        <li><b>Topic leakage</b><span>Character n-grams can still pick up topic words and names, not just style.</span></li>
+        <li><b>Fixed threshold</b><span>The 0.90 link threshold favours fewer false links and still needs calibration on real validation data.</span></li>
       </ul>
     </section>
 
-    <section>
-      <h2>Stack</h2>
-      <p>Python 3.11–3.13, Streamlit, PyMuPDF, spaCy (en_core_web_sm), scikit-learn (TF-IDF, SVD, agglomerative clustering), NumPy, pandas, pytest, uv.</p>
+    <section class="page" aria-label="References">
+      <header class="ph"><h2><span class="num">5</span>Stack and references</h2><span class="pno"></span></header>
+      <dl class="stack">
+        <div><dt>App</dt><dd>Python 3.11–3.13, Streamlit</dd></div>
+        <div><dt>PDF handling</dt><dd>PyMuPDF for text, coordinates and annotated output</dd></div>
+        <div><dt>Language</dt><dd>spaCy en_core_web_sm for sentences, POS and syntax</dd></div>
+        <div><dt>Modelling</dt><dd>scikit-learn: TF-IDF, SVD, agglomerative clustering; NumPy, pandas</dd></div>
+        <div><dt>Testing and tooling</dt><dd>pytest, uv</dd></div>
+        <div><dt>Deployed</dt><dd><a href="https://common-writer.streamlit.app/">common-writer.streamlit.app</a></dd></div>
+      </dl>
+      <h3>References</h3>
+      <ol class="refs">
+        <li><span>[1]</span><div><a href="https://github.com/ivannikov-lab/style-change-analysis">ivannikov-lab/style-change-analysis</a>, the base architecture for the project</div></li>
+        <li><span>[2]</span><div><a href="https://github.com/swan-07/authorship-verification">swan-07/authorship-verification</a>, for embeddings</div></li>
+        <li><span>[3]</span><div>ChatGPT, for coding the pipeline, ideating improvements and finding solutions</div></li>
+      </ol>
+      <div class="endpaper small">
+        <p class="sig">thanks for reading</p>
+        <p>Rithik M, NLP portfolio, 2026</p>
+      </div>
     </section>
 
-    <section>
-      <h2>References</h2>
-      <ul class="plainlist">
-        <li><a href="https://github.com/ivannikov-lab/style-change-analysis">ivannikov-lab/style-change-analysis</a>, the base architecture for the project</li>
-        <li><a href="https://github.com/swan-07/authorship-verification">swan-07/authorship-verification</a>, for embeddings</li>
-        <li>ChatGPT, for coding the pipeline, ideating improvements and finding solutions</li>
-      </ul>
-    </section>
-  </article>
-</section>
+  </div></div></div>
+</div>
 
 <div class="book" id="project" role="tabpanel" aria-labelledby="tab-project" hidden>
   <div class="stage"><div class="notebook"><div class="spiral" aria-hidden="true"></div><div class="pages">
