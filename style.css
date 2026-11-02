@@ -59,12 +59,14 @@ pre code, .box code { color: inherit; }
 .nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 50;
   height: var(--nav-h);
-  display: flex; justify-content: center; align-items: center;
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
   gap: clamp(22px, 5vw, 56px);
   pointer-events: none;
 }
+/* Middle tab sits on the page's centre line, the others hug it */
+.nav button:first-child { justify-self: end; }
+.nav button:last-child { justify-self: start; }
 .nav > * { pointer-events: auto; }
-.nav .mark { width: 30px; color: var(--desk-text); }
 .nav button {
   background: none; border: 0; padding: 4px 2px 10px;
   font: 400 1.3rem var(--hand); color: var(--desk-text);
@@ -271,7 +273,40 @@ pre { background: var(--desk); color: var(--desk-text); font: 0.8em/1.55 var(--m
 .endpaper { min-height: 100%; display: grid; place-content: center; text-align: center; gap: 6px; }
 .endpaper .sig { font: 2.4em var(--hand); color: var(--ink); margin: 0; }
 .endpaper p { margin: 0 auto; }
-.empty { min-height: 100%; display: grid; place-content: center; text-align: center; font: 1.6em var(--hand); color: var(--muted); }
+
+/* Stars and learnings: plain pages on the desk, outside the notebook */
+.plain {
+  position: relative; z-index: 1; min-height: 100vh;
+  display: grid; place-items: center;
+  padding: calc(var(--nav-h) + 24px) 24px 56px;
+  color: var(--desk-text); text-align: center;
+}
+.intro { max-width: 680px; }
+.hello { font: 1.7rem var(--hand); color: var(--marker); margin: 0; }
+.intro h1 { font: 700 clamp(3.2rem, 9vw, 6rem)/1 var(--serif); margin: 4px 0 20px; letter-spacing: -0.01em; }
+.about { font-size: 1.12rem; line-height: 1.65; margin: 0 auto 36px; max-width: 58ch; color: #d9cdbd; }
+.stars { display: flex; justify-content: center; gap: clamp(8px, 2vw, 18px); }
+.stars svg { width: clamp(38px, 7vw, 58px); fill: var(--marker); stroke: var(--marker); stroke-width: 1.4; stroke-linejoin: round; }
+.count { font: 1.5rem var(--hand); margin: 12px 0 36px; }
+.count b { font: 700 1.3em var(--serif); color: var(--marker); }
+.meta { display: grid; grid-template-columns: repeat(4, auto); justify-content: center; gap: 12px 36px; margin: 0 0 36px; padding: 18px 0; border-block: 1px solid rgba(239, 227, 211, 0.2); }
+.meta dt { font: 1rem var(--hand); color: var(--marker); }
+.meta dd { margin: 0; font-size: 0.95rem; }
+.meta a { color: var(--desk-text); }
+.go { font: 1.35rem var(--hand); color: var(--desk); background: var(--marker); border: 0; border-radius: 999px; padding: 10px 26px 12px; cursor: pointer; }
+.go:hover { background: #f7d872; }
+.soon { font: 1.8rem var(--hand); color: var(--desk-text); }
+@media (max-width: 640px) { .meta { grid-template-columns: repeat(2, auto); } }
+/* Pages scroll under the menu on phones, so give it a solid strip */
+@media (max-width: 760px) { .nav { background: var(--desk); box-shadow: 0 6px 12px var(--desk); } }
+@media (prefers-reduced-motion: no-preference) {
+  .enter .stars svg { animation: pop 0.6s cubic-bezier(0.3, 1.6, 0.5, 1) both; animation-delay: calc(0.35s + var(--k) * 0.12s); }
+  .enter .intro > :not(.stars) { animation: rise 0.6s ease-out both; }
+  .stars svg { transition: transform 0.3s; }
+  .stars svg:hover { transform: rotate(18deg) scale(1.15); }
+}
+@keyframes pop { from { transform: scale(0) rotate(-90deg); opacity: 0; } to { transform: scale(1) rotate(0); opacity: 1; } }
+@keyframes rise { from { transform: translateY(10px); opacity: 0; } to { transform: none; opacity: 1; } }
 
 /* Small screens and reduced motion: plain stacked sheets, no flipping */
 @media (max-width: 760px), (prefers-reduced-motion: reduce) {
@@ -283,7 +318,7 @@ pre { background: var(--desk); color: var(--desk-text); font: 0.8em/1.55 var(--m
   .page { position: relative; inset: auto; transform: none; visibility: visible; transition: none; }
   .face { position: relative; overflow: visible; font-size: 15px; }
   .back, .face::after, .face::before { display: none; }
-  .empty, .endpaper { min-height: 50vh; }
+  .endpaper { min-height: 50vh; }
 }
 @media (max-width: 760px) {
   .cover, .cols, .stack, .split, .notes { grid-template-columns: minmax(0, 1fr); }

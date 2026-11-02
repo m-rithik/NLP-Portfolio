@@ -40,27 +40,35 @@
 </div>
 
 <nav class="nav" role="tablist" aria-label="Sections">
-  <svg class="mark" viewBox="0 0 30 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 10 C10 3 20 3 25 10 C20 17 10 17 5 10 Z M5 10 L1 6 M5 10 L1 14"/><circle cx="20" cy="9" r="1" fill="currentColor"/></svg>
-  <button role="tab" id="tab-stars" aria-controls="stars" aria-selected="false">stars</button>
-  <button role="tab" id="tab-project" aria-controls="project" aria-selected="true">project</button>
+  <button role="tab" id="tab-stars" aria-controls="stars" aria-selected="true">stars</button>
+  <button role="tab" id="tab-project" aria-controls="project" aria-selected="false">project</button>
   <button role="tab" id="tab-learnings" aria-controls="learnings" aria-selected="false">learnings</button>
 </nav>
 
 <main>
 
-<div class="book" id="stars" role="tabpanel" aria-labelledby="tab-stars" hidden>
-  <div class="stage"><div class="notebook"><div class="spiral" aria-hidden="true"></div><div class="pages">
-    <section class="page"><p class="empty">Stars will be added here.</p></section>
-  </div></div></div>
-</div>
+<section class="plain" id="stars" role="tabpanel" aria-labelledby="tab-stars">
+  <div class="intro">
+    <p class="hello">hi, I'm</p>
+    <h1>Rithik M</h1>
+    <p class="about">An Integrated M.Tech student in Computer Science and Engineering. This portfolio collects my work for Natural Language Processing and Computational Linguistics, starting with Fisher, an offline scam detector for messages in Indian languages.</p>
+    <div class="stars" role="img" aria-label="6 stars achieved"><svg style="--k:0" viewBox="0 0 24 24"><path d="M12 2.5l2.8 6.3 6.9.7-5.2 4.6 1.5 6.8L12 17.4l-6 3.5 1.5-6.8-5.2-4.6 6.9-.7z"/></svg><svg style="--k:1" viewBox="0 0 24 24"><path d="M12 2.5l2.8 6.3 6.9.7-5.2 4.6 1.5 6.8L12 17.4l-6 3.5 1.5-6.8-5.2-4.6 6.9-.7z"/></svg><svg style="--k:2" viewBox="0 0 24 24"><path d="M12 2.5l2.8 6.3 6.9.7-5.2 4.6 1.5 6.8L12 17.4l-6 3.5 1.5-6.8-5.2-4.6 6.9-.7z"/></svg><svg style="--k:3" viewBox="0 0 24 24"><path d="M12 2.5l2.8 6.3 6.9.7-5.2 4.6 1.5 6.8L12 17.4l-6 3.5 1.5-6.8-5.2-4.6 6.9-.7z"/></svg><svg style="--k:4" viewBox="0 0 24 24"><path d="M12 2.5l2.8 6.3 6.9.7-5.2 4.6 1.5 6.8L12 17.4l-6 3.5 1.5-6.8-5.2-4.6 6.9-.7z"/></svg><svg style="--k:5" viewBox="0 0 24 24"><path d="M12 2.5l2.8 6.3 6.9.7-5.2 4.6 1.5 6.8L12 17.4l-6 3.5 1.5-6.8-5.2-4.6 6.9-.7z"/></svg></div>
+    <p class="count"><b>6</b> stars achieved</p>
+    <dl class="meta">
+      <div><dt>Reg. no.</dt><dd>23MID0413</dd></div>
+      <div><dt>Course</dt><dd>NLP and Computational Linguistics</dd></div>
+      <div><dt>Project</dt><dd>Fisher</dd></div>
+      <div><dt>GitHub</dt><dd><a href="https://github.com/m-rithik">m-rithik</a></dd></div>
+    </dl>
+    <button class="go" data-go="project">Read the Fisher project</button>
+  </div>
+</section>
 
-<div class="book" id="learnings" role="tabpanel" aria-labelledby="tab-learnings" hidden>
-  <div class="stage"><div class="notebook"><div class="spiral" aria-hidden="true"></div><div class="pages">
-    <section class="page"><p class="empty">Learnings will be added here.</p></section>
-  </div></div></div>
-</div>
+<section class="plain" id="learnings" role="tabpanel" aria-labelledby="tab-learnings" hidden>
+  <p class="soon">Learnings will be added here.</p>
+</section>
 
-<div class="book" id="project" role="tabpanel" aria-labelledby="tab-project">
+<div class="book" id="project" role="tabpanel" aria-labelledby="tab-project" hidden>
   <div class="stage"><div class="notebook"><div class="spiral" aria-hidden="true"></div><div class="pages">
 
     <!-- 1. Title -->
@@ -494,7 +502,9 @@
       t.tabIndex = on ? 0 : -1;
       document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
     });
-    book = document.getElementById(id);
+    const panel = document.getElementById(id);
+    book = panel.classList.contains('book') ? panel : null;
+    panel.classList.remove('enter'); void panel.offsetWidth; panel.classList.add('enter');
     scrollTo(0, 0);
     flip();
   }
@@ -507,9 +517,10 @@
   });
   const fromHash = () => {
     const id = location.hash.slice(1);
-    show(tabs.some(t => t.getAttribute('aria-controls') === id) ? id : 'project');
+    show(tabs.some(t => t.getAttribute('aria-controls') === id) ? id : 'stars');
   };
   addEventListener('hashchange', fromHash);
+  document.querySelectorAll('[data-go]').forEach(b => b.addEventListener('click', () => { location.hash = b.dataset.go; }));
   fromHash();
 
   // Desk doodles lean towards the cursor and spin when clicked
