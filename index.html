@@ -410,8 +410,12 @@ ask if you have doubts</pre>
       if (d) { const n = tabs[(i + d + tabs.length) % tabs.length]; n.focus(); n.click(); }
     });
   });
-  const start = location.hash.slice(1);
-  show(tabs.some(t => t.getAttribute('aria-controls') === start) ? start : 'project');
+  const fromHash = () => {
+    const id = location.hash.slice(1);
+    show(tabs.some(t => t.getAttribute('aria-controls') === id) ? id : 'project');
+  };
+  addEventListener('hashchange', fromHash);
+  fromHash();
 </script>
 </body>
 </html>
