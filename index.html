@@ -4,70 +4,87 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>NLP Portfolio</title>
-<meta name="description" content="Fisher: explainable, offline detection of scam and phishing messages in Indian languages. NLP project writeup by Rithik V.">
+<meta name="description" content="Fisher: explainable, offline detection of scam and phishing messages in Indian languages. NLP project writeup by Rithik M.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600&family=Kalam:wght@400&family=Young+Serif&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@400;700&family=Gochi+Hand&family=Inter:wght@400;600&family=Kalam&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<div class="tiles l" aria-hidden="true"></div>
+<div class="tiles r" aria-hidden="true"></div>
+<svg class="doodle fish" viewBox="0 0 120 80" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <path d="M22 42 C38 18 78 16 98 40 C80 64 40 66 22 42 Z"/><path d="M22 42 L4 28 L9 42 L4 57 Z"/><circle cx="84" cy="36" r="2.5"/>
+  <path d="M60 24 C56 34 56 50 60 60"/><path d="M48 50 c4 3 8 3 12 0"/><circle cx="108" cy="20" r="4"/><circle cx="114" cy="8" r="2.5"/>
+</svg>
+<svg class="doodle lock" viewBox="0 0 90 100" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <rect x="12" y="44" width="66" height="50" rx="8"/><path d="M26 44 V30 a19 19 0 0 1 38 0 V44"/><circle cx="45" cy="64" r="6"/><path d="M45 70 V80"/>
+  <path d="M4 20 l8 4 M8 6 l6 10 M84 18 l-8 4"/>
+</svg>
+
 <nav class="nav" role="tablist" aria-label="Sections">
-  <button role="tab" id="tab-stars" aria-controls="stars" aria-selected="false">Stars</button>
-  <button role="tab" id="tab-project" aria-controls="project" aria-selected="true">Project</button>
-  <button role="tab" id="tab-learnings" aria-controls="learnings" aria-selected="false">Learnings</button>
+  <svg class="mark" viewBox="0 0 30 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 10 C10 3 20 3 25 10 C20 17 10 17 5 10 Z M5 10 L1 6 M5 10 L1 14"/><circle cx="20" cy="9" r="1" fill="currentColor"/></svg>
+  <button role="tab" id="tab-stars" aria-controls="stars" aria-selected="false">stars</button>
+  <button role="tab" id="tab-project" aria-controls="project" aria-selected="true">project</button>
+  <button role="tab" id="tab-learnings" aria-controls="learnings" aria-selected="false">learnings</button>
 </nav>
 
-<main class="sheet">
+<main>
 
-<section id="stars" role="tabpanel" aria-labelledby="tab-stars" hidden>
-  <p class="empty">Stars will be added here.</p>
-</section>
+<div class="book" id="stars" role="tabpanel" aria-labelledby="tab-stars" hidden>
+  <div class="stage"><div class="notebook"><div class="spiral" aria-hidden="true"></div><div class="pages">
+    <section class="page"><p class="empty">Stars will be added here.</p></section>
+  </div></div></div>
+</div>
 
-<section id="learnings" role="tabpanel" aria-labelledby="tab-learnings" hidden>
-  <p class="empty">Learnings will be added here.</p>
-</section>
+<div class="book" id="learnings" role="tabpanel" aria-labelledby="tab-learnings" hidden>
+  <div class="stage"><div class="notebook"><div class="spiral" aria-hidden="true"></div><div class="pages">
+    <section class="page"><p class="empty">Learnings will be added here.</p></section>
+  </div></div></div>
+</div>
 
-<section id="project" role="tabpanel" aria-labelledby="tab-project">
+<div class="book" id="project" role="tabpanel" aria-labelledby="tab-project">
+  <div class="stage"><div class="notebook"><div class="spiral" aria-hidden="true"></div><div class="pages">
 
-  <!-- 1. Title -->
-  <div class="hero">
-    <div class="hero-top">
-      <p class="kicker hand">1 &nbsp;Title</p>
-      <h1>Fisher</h1>
-      <p class="subtitle">Explainable, offline detection of scam and phishing messages in Indian languages</p>
-    </div>
+    <!-- 1. Title -->
+    <section class="page" aria-label="1. Title">
+      <div class="cover">
+        <div>
+          <p class="sig">Fisher</p>
+          <p class="role">NLP project, J Component</p>
+          <h1>Explainable, offline detection of scam and phishing messages in Indian languages</h1>
+          <p class="rot">catching scams in <span id="lang">Hinglish</span></p>
+          <dl class="facts">
+            <div><dt>Team</dt><dd>Rithik M (23MID0413)<br>Dinesh Raj N (23MIC0051)</dd></div>
+            <div><dt>Guide</dt><dd>Prof. Sharmila Banu, SCOPE</dd></div>
+            <div><dt>Course</dt><dd>Natural Language Processing and Computational Linguistics</dd></div>
+            <div><dt>Code</dt><dd><a href="https://github.com/m-rithik/Phishing-in-indian-language">GitHub repo</a><br>v0.6.0, Nov 2026</dd></div>
+          </dl>
+        </div>
+        <svg class="art" viewBox="0 0 320 320" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Line drawing: a fishing hook catches a scam message on a phone while a fish swims by">
+          <path d="M176 2 C178 30 174 60 176 88"/>
+          <path d="M176 88 C176 104 194 104 194 92 L190 96"/>
+          <rect x="112" y="62" width="132" height="230" rx="20"/>
+          <path d="M160 76 H196"/>
+          <path d="M126 104 h104 a8 8 0 0 1 8 8 v40 a8 8 0 0 1 -8 8 h-80 l-12 12 v-12 h-12 a8 8 0 0 1 -8 -8 v-40 a8 8 0 0 1 8 -8 z"/>
+          <rect x="132" y="121" width="38" height="14" fill="#f2c94c" stroke="none"/>
+          <text x="134" y="133" fill="currentColor" stroke="none" font-family="Gochi Hand, cursive" font-size="17">OTP bhejo!</text>
+          <text x="134" y="152" fill="currentColor" stroke="none" font-family="Gochi Hand, cursive" font-size="13">turant, khata band...</text>
+          <path d="M150 190 h70 a8 8 0 0 1 8 8 v22 a8 8 0 0 1 -8 8 h-70 a8 8 0 0 1 -8 -8 v-22 a8 8 0 0 1 8 -8 z"/>
+          <path d="M154 204 H214 M154 214 H196"/>
+          <path d="M14 254 C40 226 84 226 104 252 C84 278 40 280 14 254 Z"/><path d="M14 254 L0 240 L4 254 L0 268 Z"/>
+          <circle cx="90" cy="248" r="2.6" fill="currentColor"/><path d="M58 236 C54 246 54 262 58 272"/>
+          <circle cx="104" cy="222" r="4"/><circle cx="96" cy="206" r="3"/><circle cx="104" cy="192" r="2"/>
+          <path d="M104 316 C110 296 118 288 128 284"/><path d="M96 316 C90 300 80 292 68 290"/><path d="M78 296 c-6 -10 2 -18 10 -14 c2 8 -2 14 -10 14 z"/>
+          <path d="M250 316 C246 300 252 286 262 280"/><path d="M262 316 C270 302 284 296 296 296"/><path d="M276 292 c8 -8 18 -4 18 4 c-8 4 -16 2 -18 -4 z"/>
+        </svg>
+      </div>
+    </section>
 
-    <dl class="facts">
-      <div><dt>Team</dt><dd>Rithik V (23MID0413)<br>Dinesh Raj N (23MIC0051)</dd></div>
-      <div><dt>Guide</dt><dd>Prof. Sharmila Banu<br>School of Computer Science and Engineering</dd></div>
-      <div><dt>Course</dt><dd>Natural Language Processing and Computational Linguistics, J Component</dd></div>
-      <div><dt>Code</dt><dd><a href="https://github.com/m-rithik/Phishing-in-indian-language">m-rithik/Phishing-in-indian-language</a><br>Release 0.6.0, November 2026</dd></div>
-    </dl>
-
-    <div class="notes" aria-label="Sample messages and Fisher's result">
-      <figure class="note">
-        <p class="lang">Hinglish, Romanized Hindi</p>
-        <blockquote>Aapka khata band ho jayega, <mark>turant</mark> <mark>OTP</mark> <mark>bhejo</mark></blockquote>
-        <p class="verdict">urgency + credential + action: high risk</p>
-      </figure>
-      <figure class="note">
-        <p class="lang">Hindi, Devanagari</p>
-        <blockquote lang="hi"><mark>तुरंत</mark> अपना <mark>OTP</mark> <mark>भेजें</mark> वरना खाता बंद हो जाएगा</blockquote>
-        <p class="verdict">same scam, native script: high risk</p>
-      </figure>
-      <figure class="note">
-        <p class="lang">English, a bank's own warning</p>
-        <blockquote>SBI will <mark>never</mark> ask for your OTP. Do not share it with anyone.</blockquote>
-        <p class="verdict">protective wording, so never high</p>
-      </figure>
-    </div>
-  </div>
-
-  <!-- 2. Motivation -->
-  <article class="row">
-    <header><span class="num">2</span><h2>Motivation</h2></header>
-    <div class="body">
+    <!-- 2. Motivation -->
+    <section class="page" aria-label="2. Motivation">
+      <header class="ph"><h2><span class="num">2</span>Motivation</h2><span class="pno"></span></header>
       <p class="lead">SMS, WhatsApp and e-mail are now the main way financial scams reach people in India. A typical message asks the reader to update KYC, share an OTP, click a link or call a number, usually by threatening to block an account.</p>
       <ul class="points">
         <li><b>Scams are multilingual</b><span>The same OTP or KYC scam arrives in English, Hindi, Tamil and Telugu, often mixed in one message, while most filters and datasets are English-only.</span></li>
@@ -76,24 +93,47 @@
         <li><b>Privacy</b><span>Messages with account details should not be uploaded to a server to be checked, so Fisher runs offline and keeps no history.</span></li>
         <li><b>Regex is under-rated</b><span>Many scam cues are lexical and structural. They can be matched cheaply, transparently and without training data. The project tests how far that goes on multilingual text.</span></li>
       </ul>
-    </div>
-  </article>
+    </section>
 
-  <!-- 3. Gap / event -->
-  <article class="row">
-    <header><span class="num">3</span><h2>The gap and the event behind it</h2></header>
-    <div class="body">
-      <h3 style="margin-top:0">The event</h3>
+    <!-- 2b. What scams look like -->
+    <section class="page" aria-label="2. Motivation, sample messages">
+      <header class="ph"><h2><span class="num">2</span>What a scam message looks like</h2><span class="pno"></span></header>
+      <p>The same scam, written three ways, and a bank's real warning that must not be flagged. Highlighted words are the cues Fisher matches.</p>
+      <div class="notes">
+        <figure class="note">
+          <p class="lang">Hinglish, Romanized Hindi</p>
+          <blockquote>Aapka khata band ho jayega, <mark>turant</mark> <mark>OTP</mark> <mark>bhejo</mark></blockquote>
+          <p class="verdict">urgency + credential + action: high risk</p>
+        </figure>
+        <figure class="note">
+          <p class="lang">Hindi, Devanagari</p>
+          <blockquote lang="hi"><mark>तुरंत</mark> अपना <mark>OTP</mark> <mark>भेजें</mark> वरना खाता बंद हो जाएगा</blockquote>
+          <p class="verdict">same scam, native script: high risk</p>
+        </figure>
+        <figure class="note">
+          <p class="lang">English, a bank's own warning</p>
+          <blockquote>SBI will <mark>never</mark> ask for your OTP. Do not share it with anyone.</blockquote>
+          <p class="verdict">protective wording, so never high</p>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 3. Gap and event -->
+    <section class="page" aria-label="3. The gap and the event">
+      <header class="ph"><h2><span class="num">3</span>The gap and the event behind it</h2><span class="pno"></span></header>
+      <h3>The event</h3>
       <p>The Reserve Bank of India has repeatedly warned the public about one pattern: a call or message that threatens to block an account for “non-updation of KYC” and asks the reader to click a link. Its BE(A)WARE booklet lists phishing links, vishing calls, UPI collect requests, lottery frauds, QR-code scams and fake loan apps as common modus operandi, and advises never to share a password, PIN or OTP, not even with bank officials [10], [11].</p>
-
       <h3>The gaps in existing work</h3>
       <ul class="points">
         <li><b>Romanized ambiguity</b><span>Detectors and models pick one spelling or one transliteration, so scam cues in Romanized Indic text are missed. Fisher generates several transliteration candidates and aggregates them.</span></li>
         <li><b>Black-box, cloud tools</b><span>Most detectors send the message to a server and return a score without reasons. Fisher runs locally and explains every signal.</span></li>
         <li><b>No multilingual scam benchmark</b><span>There is no labelled, stratified set of scam and benign messages across Indian languages and scripts. Fisher builds the format, validators and metrics such a set needs.</span></li>
       </ul>
+    </section>
 
-      <h3>Related work and where it falls short</h3>
+    <!-- 3b. Related work -->
+    <section class="page" aria-label="3. Related work">
+      <header class="ph"><h2><span class="num">3</span>Related work and where it falls short</h2><span class="pno"></span></header>
       <div class="table-wrap"><table>
         <thead><tr><th>Work</th><th>What it offers</th><th>Limitation for Indian scam detection</th></tr></thead>
         <tbody>
@@ -105,70 +145,54 @@
           <tr><td>DravidianCodeMix 2022 [6]</td><td>Code-mixed Tamil, Malayalam, Kannada</td><td>Sentiment and offence, not scams</td></tr>
           <tr><td>Dakshina 2020 [7]</td><td>Native and Latin text, romanisation lexicons</td><td>General text, not scam messages</td></tr>
           <tr><td>Unicode TS #39 [9]</td><td>Confusable (lookalike) characters</td><td>Character level, no language or intent</td></tr>
+          <tr><td>RBI BE(A)WARE [10]</td><td>Authoritative list of fraud modus operandi</td><td>Awareness material, not a detector</td></tr>
         </tbody>
       </table></div>
-    </div>
-  </article>
+    </section>
 
-  <!-- 4. Architecture -->
-  <article class="row">
-    <header><span class="num">4</span><h2>Architecture</h2></header>
-    <div class="body">
-      <p>Fisher has two parts kept apart: a <b>product</b> (browser extension and command-line tool in plain JavaScript, no runtime packages) and a <b>research pipeline</b> in Python that measures it. Both use the same engine, so what the pipeline measures is what users see.</p>
-
+    <!-- 4. Architecture -->
+    <section class="page" aria-label="4. Architecture">
+      <header class="ph"><h2><span class="num">4</span>Architecture</h2><span class="pno"></span></header>
+      <p>A <b>product</b> (browser extension and CLI in plain JavaScript, no runtime packages) and a <b>research pipeline</b> in Python share one engine, so what the pipeline measures is what users see.</p>
       <div class="diagram" role="img" aria-label="Four user inputs feed the browser extension or the command line, which both call the shared analysis engine: analyzer, detector and link checks. The engine returns a result report.">
-        <div class="band">
-          <p>User inputs</p>
-          <div class="boxes">
-            <div class="box">Pasted message or link</div>
-            <div class="box">Bulk check, .txt file</div>
-            <div class="box">Right-click on selected text</div>
-            <div class="box">Command line, stdin</div>
-          </div>
-        </div>
+        <div class="band"><p>User inputs</p><div class="boxes">
+          <div class="box">Pasted message or link</div><div class="box">Bulk check, .txt file</div><div class="box">Right-click on selected text</div><div class="box">Command line, stdin</div>
+        </div></div>
         <div class="arrow" aria-hidden="true">↓</div>
-        <div class="band">
-          <p>Surfaces (Manifest V3, no network)</p>
-          <div class="boxes">
-            <div class="box"><code>popup.html / popup.js</code><br>UI, rendering, saved reports</div>
-            <div class="box"><code>background.js</code><br>context menu, ~30 s in-memory hand-off</div>
-            <div class="box"><code>fisher.mjs</code><br>analyze, batch, batch-detail</div>
-          </div>
-        </div>
+        <div class="band"><p>Surfaces (Manifest V3, no network)</p><div class="boxes">
+          <div class="box"><code>popup.html / popup.js</code><br>UI, rendering, reports</div>
+          <div class="box"><code>background.js</code><br>context menu, ~30 s hand-off</div>
+          <div class="box"><code>fisher.mjs</code><br>analyze, batch, batch-detail</div>
+        </div></div>
         <div class="arrow" aria-hidden="true">↓</div>
-        <div class="band engine">
-          <p>Shared analysis engine (JavaScript, offline)</p>
-          <div class="boxes">
-            <div class="box"><code>analyzer.mjs</code><br>report builder</div>
-            <div class="box"><code>detector.mjs</code><br>normalise, rules, decision</div>
-            <div class="box"><code>links.mjs</code><br>URL structure checks</div>
-          </div>
-        </div>
+        <div class="band engine"><p>Shared analysis engine (JavaScript, offline)</p><div class="boxes">
+          <div class="box"><code>analyzer.mjs</code><br>report builder</div>
+          <div class="box"><code>detector.mjs</code><br>normalise, rules, decision</div>
+          <div class="box"><code>links.mjs</code><br>URL structure checks</div>
+        </div></div>
         <div class="arrow" aria-hidden="true">↓</div>
-        <div class="band out">
-          <p>Result report</p>
-          <div class="boxes"><div class="box">Risk level, reasons, next steps. Shown in the popup, printed by the CLI, or saved as JSON without the text or links.</div></div>
-        </div>
+        <div class="band out"><p>Result report: risk level, reasons, next steps. Popup, CLI, or JSON saved without the text or links.</p></div>
       </div>
-      <p class="caption">Product architecture, redrawn from the report.</p>
+    </section>
 
+    <!-- 4b. Architecture cont. -->
+    <section class="page" aria-label="4. Architecture, pipeline and decisions">
+      <header class="ph"><h2><span class="num">4</span>Research pipeline and design decisions</h2><span class="pno"></span></header>
       <h3>Research pipeline</h3>
       <p>Public datasets go through the <code>eval/</code> loader and importers. <code>translit_experiment.py</code> and <code>translit_accuracy.py</code> combine them with the <code>fisher_transliteration</code> candidate generator, call the product only through <code>node fisher.mjs batch-detail</code>, and write metrics, error lists and McNemar tests to <code>eval/results/*.json</code>.</p>
-
       <h3>Design decisions</h3>
       <ul class="points">
         <li><b>Offline by construction</b><span>Content-security policy <code>default-src 'none'; connect-src 'none'</code>. One permission, <code>contextMenus</code>. No host permissions, content scripts or storage.</span></li>
         <li><b>One shared engine</b><span>Popup and CLI import the same modules, so there is one behaviour to test.</span></li>
         <li><b>Pure, bounded functions</b><span>20,000 code points per message, 2,048 per link, 32 link candidates, 100 bulk lines in the browser and 500 in the CLI, 1 MiB files.</span></li>
         <li><b>Reports without content</b><span>Saved reports hold findings, counts and line numbers, never the submitted text.</span></li>
+        <li><b>Product and research apart</b><span>Python calls the product only through the CLI, which prints one JSON result per line and never echoes the input.</span></li>
       </ul>
-    </div>
-  </article>
+    </section>
 
-  <!-- 5. Tech stack -->
-  <article class="row">
-    <header><span class="num">5</span><h2>Tech stack</h2></header>
-    <div class="body">
+    <!-- 5. Tech stack -->
+    <section class="page" aria-label="5. Tech stack">
+      <header class="ph"><h2><span class="num">5</span>Tech stack</h2><span class="pno"></span></header>
       <dl class="stack">
         <div><dt>Engine and extension</dt><dd>JavaScript ES modules, Node.js 22, Chrome/Edge Manifest V3. No runtime packages.</dd></div>
         <div><dt>Research pipeline</dt><dd>Python 3.11 with uv; numpy, pandas, scikit-learn, openpyxl.</dd></div>
@@ -178,16 +202,14 @@
         <div><dt>Testing</dt><dd>node:test, pytest, Playwright 1.63, axe-core 4.13 for accessibility.</dd></div>
         <div><dt>CI and tooling</dt><dd>Git, GitHub Actions, Docker for Linux runs, a written decision log.</dd></div>
         <div><dt>Coding assistance</dt><dd>Claude Code and Google Antigravity. Every change was run against the automated tests.</dd></div>
-        <div><dt>This website</dt><dd>Hand-written HTML and CSS, a few lines of JavaScript for tabs. Young Serif, Instrument Sans and Kalam from Google Fonts.</dd></div>
+        <div><dt>This website</dt><dd>Hand-written HTML and CSS with a short script for tabs and page flips. Averia Serif Libre, Inter, Gochi Hand and Kalam from Google Fonts.</dd></div>
         <div><dt>Cost</dt><dd>No licence or cloud cost. All tools are free or open source.</dd></div>
       </dl>
-    </div>
-  </article>
+    </section>
 
-  <!-- 6. Datasets -->
-  <article class="row">
-    <header><span class="num">6</span><h2>Datasets used</h2></header>
-    <div class="body">
+    <!-- 6. Datasets -->
+    <section class="page" aria-label="6. Datasets used">
+      <header class="ph"><h2><span class="num">6</span>Datasets used</h2><span class="pno"></span></header>
       <div class="table-wrap"><table>
         <thead><tr><th>Dataset</th><th>Language / script</th><th>Label</th><th>Size used</th><th>Role</th></tr></thead>
         <tbody>
@@ -198,11 +220,15 @@
           <tr><td>Dravidian SMS ham/spam [14]</td><td>Tamil, Telugu, English</td><td>ham / spam</td><td>not in reported figures</td><td>Auxiliary TF-IDF baselines</td></tr>
         </tbody>
       </table></div>
-
       <h3>Planned evaluation set</h3>
       <p>4 languages × 2 labels × 30 messages = 240, mixing native-script and Romanized items. It has not been collected yet: no authentic labelled phishing corpus exists for these languages, and real messages need consent and de-identification, for which the project built validators.</p>
+      <p>Raw public data stays out of version control; only derived metrics are committed. UCI is promotional spam and Dakshina is formal Wikipedia text, so neither measures real Indian-language phishing.</p>
+    </section>
 
-      <h3>Record format</h3>
+    <!-- 6b. Record format -->
+    <section class="page" aria-label="6. Dataset record format">
+      <header class="ph"><h2><span class="num">6</span>Evaluation record format</h2><span class="pno"></span></header>
+      <p>Every evaluation item is one JSONL record. The loader rejects duplicates and invalid fields.</p>
       <div class="table-wrap"><table>
         <thead><tr><th>Field</th><th>Allowed values</th></tr></thead>
         <tbody>
@@ -210,22 +236,18 @@
           <tr><td><code>text</code></td><td>Message text. Duplicates after lower-casing and whitespace collapsing are rejected.</td></tr>
           <tr><td><code>label</code></td><td><code>scam</code> or <code>benign</code></td></tr>
           <tr><td><code>language</code></td><td><code>english</code>, <code>hindi</code>, <code>tamil</code>, <code>telugu</code></td></tr>
-          <tr><td><code>script</code></td><td><code>native</code>, <code>romanized</code>, <code>latin_english</code></td></tr>
-          <tr><td><code>source</code></td><td><code>synthetic</code>, <code>consented</code> or <code>public:&lt;name&gt;</code></td></tr>
+          <tr><td><code>script</code></td><td><code>native</code>, <code>romanized</code>, <code>latin_english</code> (exactly when the language is English)</td></tr>
+          <tr><td><code>source</code></td><td><code>synthetic</code>, <code>consented</code> or <code>public:&lt;name&gt;</code>; public text is never labelled synthetic</td></tr>
         </tbody>
       </table></div>
-      <p>Raw public data stays out of version control; only derived metrics are committed. UCI is promotional spam and Dakshina is formal Wikipedia text, so neither measures real Indian-language phishing.</p>
-    </div>
-  </article>
+<pre>{"id": "hi-001", "text": "...", "label": "scam", "language": "hindi", "script": "romanized", "source": "synthetic"}</pre>
+    </section>
 
-  <!-- 7. Prompts -->
-  <article class="row">
-    <header><span class="num">7</span><h2>Prompts used to build this website</h2></header>
-    <div class="body">
-      <p>This site was built with Claude Code (Claude Opus 5.5), using the karpathy-guidelines, frontend-design and replica-skill plugins. These are the prompts it was given, in order.</p>
-      <div class="prompt">
-        <p class="hand">Prompt 1</p>
-<pre>andrej-karpathy-skills karpathy-guidelines design frontend-design
+    <!-- 7. Prompts -->
+    <section class="page" aria-label="7. Prompts, part 1">
+      <header class="ph"><h2><span class="num">7</span>Prompts used to build this website</h2><span class="pno"></span></header>
+      <p>Built with Claude Code (Claude Opus 5.5) using the karpathy-guidelines, frontend-design and replica-skill plugins. Prompt 1, verbatim:</p>
+<pre class="prompt-cols">andrej-karpathy-skills karpathy-guidelines design frontend-design
 The project is located at the repository m-rithik Phishing-in-indian-language. Reference report and ppt are attached.
 As part of Project Writeup:
 
@@ -254,29 +276,41 @@ plugin install replica-skill replica-skill
 Push the finalized code to the repository m-rithik NLP-Portfolio.
 
 ask if you have doubts</pre>
-      </div>
-      <div class="prompt">
-        <p class="hand">Prompt 2</p>
-<pre>use the plugins</pre>
-      </div>
-    </div>
-  </article>
+    </section>
 
-  <!-- 8. NLP pipeline -->
-  <article class="row">
-    <header><span class="num">8</span><h2>NLP pipeline</h2></header>
-    <div class="body">
-      <p>Fisher’s detector is a deterministic rule-based classifier with no learned parameters. Every result can be traced to named rules. One message goes through six steps; an invalid input stops at step 1 with “could not analyze” and never a partial result.</p>
+    <section class="page" aria-label="7. Prompts, part 2">
+      <header class="ph"><h2><span class="num">7</span>Prompts, continued</h2><span class="pno"></span></header>
+      <div class="prompt"><p class="hand">Prompt 2</p><pre>use the plugins</pre></div>
+      <div class="prompt"><p class="hand">Prompt 3</p><pre>localhost it once</pre></div>
+      <div class="prompt"><p class="hand">Prompt 4</p><pre>its rithik M
+
+can you make it like flip book on every scroll
+
+see the reference site properly what are you doing</pre></div>
+    </section>
+
+    <!-- 8. NLP pipeline -->
+    <section class="page" aria-label="8. NLP pipeline">
+      <header class="ph"><h2><span class="num">8</span>NLP pipeline</h2><span class="pno"></span></header>
+      <p>The detector is a deterministic rule-based classifier with no learned parameters, so every result traces to named rules. An invalid input stops at step 1 with “could not analyze”, never a partial result.</p>
       <ol class="steps">
         <li><b>Validate</b>Length, control characters, malformed Unicode.</li>
         <li><b>Normalise</b>NFKC, strip invisible characters, lowercase, undo “[.]” and “hxxp”.</li>
         <li><b>Extract links</b>Parse URL structure, never open it, then mask link text.</li>
-        <li><b>Match signals</b>Six weighted regex groups in four languages plus Romanized forms.</li>
+        <li><b>Match signals</b>Weighted regex groups in four languages plus Romanized forms.</li>
         <li><b>Check context</b>Negation, protective wording, lookalike letters.</li>
         <li><b>Decide</b>Risk level with reasons and next steps.</li>
       </ol>
+      <h3>Decision</h3>
+      <ul class="points">
+        <li><b>High</b><span>A non-negated sensitive request with a link or urgency; an impersonated authority with a link and a credential, urgency or money cue; a lure with a link or phone number; or an authority with a phone number and urgency.</span></li>
+        <li><b>Review</b><span>Total score of 3 or more, a lookalike sensitive term, or incomplete link inspection.</span></li>
+        <li><b>No match</b><span>None of the above. This is never described as safe.</span></li>
+      </ul>
+    </section>
 
-      <h3>Signal groups</h3>
+    <section class="page" aria-label="8. Signal groups">
+      <header class="ph"><h2><span class="num">8</span>Signal groups</h2><span class="pno"></span></header>
       <div class="table-wrap"><table>
         <thead><tr><th>Group</th><th>Weight</th><th>Example cues</th></tr></thead>
         <tbody>
@@ -289,15 +323,13 @@ ask if you have doubts</pre>
           <tr><td>lure</td><td class="n">2</td><td>lottery, jackpot, KBC, PAN-card warnings</td></tr>
         </tbody>
       </table></div>
+<pre>const risk = highRiskCombination ? "high"
+  : (linkLimited || hasConfusableSensitiveTerm || score >= 3) ? "review"
+  : "no_match";</pre>
+    </section>
 
-      <h3>Decision</h3>
-      <ul class="points">
-        <li><b>High</b><span>A non-negated sensitive request with a link or urgency; or an impersonated authority with a link and a credential, urgency or money cue; or a lure with a link or phone number; or an authority with a phone number and urgency.</span></li>
-        <li><b>Review</b><span>Total score of 3 or more, a lookalike sensitive term, or incomplete link inspection.</span></li>
-        <li><b>No match</b><span>None of the above. This is never described as safe.</span></li>
-      </ul>
-
-      <h3>Transliteration of Romanized words</h3>
+    <section class="page" aria-label="8. Transliteration">
+      <header class="ph"><h2><span class="num">8</span>Transliteration of Romanized words</h2><span class="pno"></span></header>
       <p>Indic scripts attach vowels to consonants as matras and suppress the inherent vowel with a virama, so letters cannot be mapped one by one. The generator tokenises the word, composes syllables, explores ambiguous choices with a beam search of width 16, and normalises candidate probabilities to sum to 1. The detector then checks the original text plus the candidate variants.</p>
       <div class="compose" lang="hi" aria-label="jaldi composes to जल्दी">
         <div><span class="r">j</span><span class="d">ज</span><small>consonant</small></div>
@@ -309,34 +341,41 @@ ask if you have doubts</pre>
         <div class="res"><span class="r">jaldi</span><span class="d">जल्दी</span><small>top candidate</small></div>
       </div>
       <p class="caption">Alternatives such as जलदी and जल्दि stay in the candidate list.</p>
-    </div>
-  </article>
+      <h3>Top candidates for scam words</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Romanized</th><th>Language</th><th>Top candidate</th><th>Confidence</th></tr></thead>
+        <tbody>
+          <tr><td>turant</td><td>Hindi</td><td>तुरंत</td><td class="n">0.79</td></tr>
+          <tr><td>udane</td><td>Tamil</td><td>உடனே</td><td class="n">0.67</td></tr>
+          <tr><td>ventane</td><td>Telugu</td><td>వెంటనే</td><td class="n">0.75</td></tr>
+        </tbody>
+      </table></div>
+    </section>
 
-  <!-- 9. Users, inputs, outputs -->
-  <article class="row">
-    <header><span class="num">9</span><h2>Users, inputs and output</h2></header>
-    <div class="body">
-      <h3 style="margin-top:0">Users</h3>
+    <!-- 9. Users, inputs, outputs -->
+    <section class="page" aria-label="9. Users and inputs">
+      <header class="ph"><h2><span class="num">9</span>Users and inputs</h2><span class="pno"></span></header>
       <ul class="points">
         <li><b>Message recipients</b><span>Anyone who gets an SMS, WhatsApp or e-mail in English, Hindi, Tamil or Telugu and wants to check it before acting. They use the browser extension.</span></li>
-        <li><b>Researchers and evaluators</b><span>People measuring the detector or the transliteration study. They use the command-line tool and the Python pipeline.</span></li>
+        <li><b>Researchers and evaluators</b><span>People measuring the detector or the transliteration study. They use the CLI and the Python pipeline.</span></li>
       </ul>
-
       <h3>Inputs</h3>
       <div class="table-wrap"><table>
         <thead><tr><th>Input</th><th>Type and format</th><th>Limit</th></tr></thead>
         <tbody>
           <tr><td>Pasted message</td><td>Unicode string; Latin, Devanagari, Tamil or Telugu, mixed allowed</td><td>20,000 code points</td></tr>
           <tr><td>Single link</td><td>URL string, inspected by structure only</td><td>2,048 code points</td></tr>
-          <tr><td>Bulk check</td><td>Plain text, one message per line, or a .txt file</td><td>100 lines / 100,000 code points in the browser; 500 lines in the CLI; 1 MiB file</td></tr>
-          <tr><td>Selected text</td><td>Text chosen on a web page via “Check selection with Fisher”</td><td>20,000 code points, held in memory ~30 s</td></tr>
-          <tr><td>CLI</td><td>stdin with <code>--mode message|url</code> and <code>--format text|json</code></td><td>Same as above</td></tr>
+          <tr><td>Bulk check</td><td>Plain text, one message per line, or a .txt file</td><td>100 lines in the browser, 500 in the CLI, 1 MiB file</td></tr>
+          <tr><td>Selected text</td><td>Text chosen via “Check selection with Fisher”</td><td>20,000 code points, held ~30 s</td></tr>
+          <tr><td>CLI</td><td>stdin with <code>--mode message|url</code>, <code>--format text|json</code></td><td>Same as above</td></tr>
           <tr><td>Evaluation data</td><td>JSONL records: id, text, label, language, script, source</td><td>Validated by the loader</td></tr>
         </tbody>
       </table></div>
+    </section>
 
-      <h3>Output</h3>
-      <p>One of four results, each with reasons, the checks performed and next steps: <b>high-risk patterns found</b>, <b>worth a closer look</b>, <b>no clear pattern match</b> or <b>could not analyze</b>. The JSON report has <code>engineVersion</code>, <code>mode</code>, <code>risk</code>, <code>reasons</code>, <code>nextSteps</code>, <code>linkSummary</code> and <code>checks</code>, and never contains the matched text.</p>
+    <section class="page" aria-label="9. Output">
+      <header class="ph"><h2><span class="num">9</span>Output</h2><span class="pno"></span></header>
+      <p>One of four results, each with reasons, the checks performed and next steps: <b>high-risk patterns found</b>, <b>worth a closer look</b>, <b>no clear pattern match</b> or <b>could not analyze</b>. The JSON report never contains the matched text.</p>
 <pre>$ echo "Aapka khata band ho jayega, turant OTP bhejo" | node fisher.mjs analyze --format json
 {
   "engineVersion": "0.6.0",
@@ -355,19 +394,20 @@ ask if you have doubts</pre>
   "checks": [{ "id": "message_rules", "label": "Message rules", "detail": "..." }]
 }</pre>
       <p><code>batch-detail</code> prints one JSON line per input line and exits with code 1 if any line could not be analyzed.</p>
+    </section>
 
+    <section class="page" aria-label="9. Output screenshots">
+      <header class="ph"><h2><span class="num">9</span>What the user sees</h2><span class="pno"></span></header>
       <div class="shots">
-        <figure><img src="assets/context-menu.png" alt="Browser context menu showing Check selection with Fisher on selected Hindi text" loading="lazy" width="916" height="1049"><figcaption>Right-click on selected text</figcaption></figure>
-        <figure><img src="assets/result.png" alt="Fisher popup: high-risk patterns found, with next steps and evidence" loading="lazy" width="576" height="994"><figcaption>Result with reasons and next steps</figcaption></figure>
-        <figure><img src="assets/bulk.png" alt="Fisher bulk check: counts per result level and per-line results" loading="lazy" width="662" height="935"><figcaption>Bulk check, counts per level</figcaption></figure>
+        <figure><img src="assets/context-menu.png" alt="Browser context menu showing Check selection with Fisher on selected Hindi text" width="916" height="1049"><figcaption>right-click on selected text</figcaption></figure>
+        <figure><img src="assets/result.png" alt="Fisher popup: high-risk patterns found, with next steps and evidence" width="576" height="994"><figcaption>result with reasons</figcaption></figure>
+        <figure><img src="assets/bulk.png" alt="Fisher bulk check: counts per result level and per-line results" width="662" height="935"><figcaption>bulk check</figcaption></figure>
       </div>
-    </div>
-  </article>
+    </section>
 
-  <!-- 10. References -->
-  <article class="row">
-    <header><span class="num">10</span><h2>References</h2></header>
-    <div class="body">
+    <!-- 10. References -->
+    <section class="page" aria-label="10. References">
+      <header class="ph"><h2><span class="num">10</span>References</h2><span class="pno"></span></header>
       <ol class="refs">
         <li><span>[1]</span>T. A. Almeida, J. M. G. Hidalgo and A. Yamakami, “Contributions to the study of SMS spam filtering: new collection and results,” Proc. ACM DocEng, 2011.</li>
         <li><span>[2]</span>O. K. Sahingoz, E. Buber, O. Demir and B. Diri, “Machine learning based phishing detection from URLs,” Expert Systems with Applications, vol. 117, pp. 345–357, 2019.</li>
@@ -384,17 +424,59 @@ ask if you have doubts</pre>
         <li><span>[13]</span>UCI Machine Learning Repository, “SMS Spam Collection.”</li>
         <li><span>[14]</span>IEEE DataPort, Dravidian-language SMS spam/ham dataset.</li>
       </ol>
-    </div>
-  </article>
+    </section>
 
-</section>
+    <section class="page" aria-label="Back cover">
+      <div class="back">
+        <p class="sig">thanks for reading</p>
+        <p>Rithik M, NLP portfolio, 2026</p>
+        <p><a href="https://github.com/m-rithik/Phishing-in-indian-language">Fisher on GitHub</a></p>
+      </div>
+    </section>
+
+  </div></div></div>
+</div>
 </main>
 
-<footer>Rithik V, NLP portfolio, 2026</footer>
-
 <script>
-  // Tabs: hash keeps the selected tab on reload and makes it linkable
   const tabs = [...document.querySelectorAll('[role="tab"]')];
+  const flipMode = matchMedia('(min-width: 761px) and (prefers-reduced-motion: no-preference)');
+  let book;
+
+  // Each book: page stacking order, page numbers, spiral rings, one snap point per page
+  document.querySelectorAll('.book').forEach(b => {
+    const pages = [...b.querySelectorAll('.page')];
+    b.style.setProperty('--n', pages.length);
+    pages.forEach((p, i) => {
+      p.style.setProperty('--z', pages.length - i);
+      const no = p.querySelector('.pno');
+      if (no) no.textContent = `p. ${i + 1} of ${pages.length}`;
+      const s = document.createElement('div');
+      s.className = 'snap';
+      s.style.top = i * 100 + 'vh';
+      b.prepend(s);
+    });
+    b.querySelector('.spiral').innerHTML = '<i></i>'.repeat(14);
+  });
+
+  // Page i lifts over the spiral while the reader scrolls through viewport i
+  function flip() {
+    if (!book) return;
+    const pages = book.querySelectorAll('.page');
+    if (!flipMode.matches) { pages.forEach(p => { p.style.removeProperty('--f'); p.style.visibility = ''; p.classList.remove('back'); }); return; }
+    const t = -book.getBoundingClientRect().top / innerHeight;
+    pages.forEach((p, i) => {
+      const x = Math.min(1, Math.max(0, t - i));
+      const f = x * x * (3 - 2 * x); // ease in and out
+      p.style.setProperty('--f', i === pages.length - 1 ? 0 : f);
+      p.classList.toggle('back', f > 0.5);
+      p.style.visibility = (f < 0.99 && i <= Math.floor(t) + 1) ? '' : 'hidden';
+    });
+  }
+  addEventListener('scroll', () => requestAnimationFrame(flip), { passive: true });
+  addEventListener('resize', flip);
+  flipMode.addEventListener('change', flip);
+
   function show(id) {
     tabs.forEach(t => {
       const on = t.getAttribute('aria-controls') === id;
@@ -402,6 +484,9 @@ ask if you have doubts</pre>
       t.tabIndex = on ? 0 : -1;
       document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
     });
+    book = document.getElementById(id);
+    scrollTo(0, 0);
+    flip();
   }
   tabs.forEach((t, i) => {
     t.addEventListener('click', () => { history.replaceState(null, '', '#' + t.getAttribute('aria-controls')); show(t.getAttribute('aria-controls')); });
@@ -416,6 +501,14 @@ ask if you have doubts</pre>
   };
   addEventListener('hashchange', fromHash);
   fromHash();
+
+  // Rotating language on the cover, like a word being swapped by hand
+  const langs = ['Hinglish', 'हिन्दी', 'Tanglish', 'தமிழ்', 'తెలుగు', 'English'];
+  const el = document.getElementById('lang');
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    let k = 0;
+    setInterval(() => { el.textContent = langs[++k % langs.length]; }, 1800);
+  }
 </script>
 </body>
 </html>
