@@ -278,6 +278,12 @@ pre { background: var(--desk); color: var(--desk-text); font: 0.8em/1.55 var(--m
 .endpaper { min-height: 100%; display: grid; place-content: center; text-align: center; gap: 6px; }
 .endpaper .sig { font: 2.4em var(--hand); color: var(--ink); margin: 0; }
 .endpaper p { margin: 0 auto; }
+/* Taped photos on the last page */
+.photos { display: flex; justify-content: center; gap: clamp(16px, 3vw, 36px); margin-bottom: 10px; }
+.photos figure { margin: 0; background: #fffaf2; padding: 8px 8px 22px; box-shadow: 2px 6px 0 rgba(34, 32, 31, 0.14); position: relative; transform: rotate(-2deg); }
+.photos figure:nth-child(2) { transform: rotate(1.8deg); }
+.photos figure::before { content: ""; position: absolute; top: -11px; left: 50%; width: 76px; height: 22px; transform: translateX(-50%) rotate(-3deg); background: rgba(242, 201, 76, 0.6); }
+.photos img { width: min(38vw, 360px); max-height: 34vh; object-fit: cover; aspect-ratio: 16 / 9; }
 
 /* Stars and learnings: plain pages on the desk, outside the notebook */
 .plain {
@@ -347,7 +353,8 @@ pre { background: var(--desk); color: var(--desk-text); font: 0.8em/1.55 var(--m
   .notes { grid-template-columns: minmax(0, 1fr); }
   .points li { grid-template-columns: minmax(0, 1fr); gap: 0; }
   .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 12px; }
-  .shots { flex-direction: column; align-items: center; }
+  .shots, .photos { flex-direction: column; align-items: center; }
+  .photos img { width: 100%; max-height: none; }
   .shots img { max-height: none; }
   .refs, .prompt-cols { columns: 1; }
   .table-wrap { overflow-x: auto; }
