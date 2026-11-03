@@ -270,6 +270,9 @@ pre { background: var(--desk); color: var(--desk-text); font: 0.8em/1.55 var(--m
 .shots img { max-height: 54vh; width: auto; border: 1.5px solid var(--ink); border-radius: 10px; transform: rotate(-1deg); }
 .shots figure:nth-child(2) img { transform: rotate(1.2deg); }
 .shots figcaption { font: 0.95em var(--hand); color: var(--muted); margin-top: 8px; text-align: center; }
+.demo { margin: 0; text-align: center; }
+.demo iframe { display: block; width: min(100%, 96vh); aspect-ratio: 16 / 9; margin: 0 auto; border: 1.5px solid var(--ink); border-radius: 10px; background: var(--desk); }
+.demo figcaption { font: 1.1em var(--hand); margin-top: 12px; }
 
 .refs { padding: 0; margin: 0; list-style: none; font-size: 0.9em; columns: 2; column-gap: 32px; }
 .refs li { break-inside: avoid; display: grid; grid-template-columns: 34px minmax(0, 1fr); margin-bottom: 0.55em; }
